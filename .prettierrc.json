@@ -1,13 +1,15 @@
 {
-  "useTabs": false,
+  "useTabs": true,
   "tabWidth": 2,
   "semi": false,
   "trailingComma": "all",
   "singleQuote": true,
   "printWidth": 130,
   "endOfLine": "auto",
-  "bracketSpacing": false,
-  "jsxBracketSameLine": false,
+  
+  "bracketSameLine": false,
+  "bracketSpacing": true,
+  "jsxSingleQuote": true,
   "overrides": [
     {
       "files": "*.scss",
