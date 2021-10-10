@@ -1,30 +1,48 @@
-import { useState, useEffect } from 'react'
+
+import Grid from '@mui/material/Grid';
+import Container from '@mui/material/Container';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+
+import { ContentBlockUI } from '../../components/ContentBlockUI'
+import { Table } from '../../components/Table'
+
+import { useGetContacts } from '../../hooks/useContacts'
+
 
 export function Contacts() {
-	const [contacts, setContacts] = useState([])
-	const [isLoading, setIsLoading] = useState(false)
-	const [isError, setIsError] = useState(false)
+  const contacts = useGetContacts()
 
-	useEffect(() => {
-        setIsLoading(true)
-		fetch('https://randomuser.me/api/?esults=200')
-			.then((response) => response.json())
-			.then((data) => {
-				setContacts(data.results)
-				setIsLoading(false)
-			})
-			.catch(() => {
-				setIsLoading(false)
-				setIsError(true)
-			})
-        }, [])
+  if (contacts.isLoading) {
+    return <h1>isLoading</h1>
+  }
 
-	if (isLoading) {
-		return <div>...loading</div>
-	}
+  if (contacts.isError) {
+    return <h1>isError</h1>
+  }
 
-	if (isError) {
-		return <div>...error</div>
-	}
-	return <h1>Hello</h1>
+  return (
+    <>
+      <Container sx={{ mt: 3 }}>
+        <Grid container sx={{justifyContent: 'space-between',}}>
+          <Grid item sx={{alignSelf: 'center'}}>
+            <Typography variant='h4' component='h1' sx={{fontWeight: 'bold'}}>
+              Contacts
+            </Typography>
+          </Grid>
+          <Grid item sx={{alignSelf: 'center'}}>
+            <Button variant="outlined">a</Button>
+            <Button variant="outlined">a</Button>
+            <Button variant="outlined">a</Button>
+          </Grid>
+        </Grid>
+      </Container>
+      <ContentBlockUI MT='20px'>
+
+      </ContentBlockUI>
+      <ContentBlockUI MT='20px' >
+        <Table></Table>
+      </ContentBlockUI>
+    </>
+  )
 }
