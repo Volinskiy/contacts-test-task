@@ -5,20 +5,24 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 import { ContentBlockUI } from '../../components/ContentBlockUI'
-import { Table } from '../../components/Table'
+import { ContactsTable } from '../../components/ContactsTable'
 
-import { useGetContacts } from '../../hooks/useContacts'
+import { useGetContacts } from '../../hooks/useGetContacts'
 
 
 export function Contacts() {
   const contacts = useGetContacts()
 
-  if (contacts.isLoading) {
-    return <h1>isLoading</h1>
-  }
-
-  if (contacts.isError) {
-    return <h1>isError</h1>
+  function getContent({isLoading, isError, data}) {
+    if (isLoading) {
+      return <h1>isLoading</h1>
+    }
+  
+    if (isError) {
+      return <h1>isError</h1>
+    }
+    
+    return <ContactsTable contacts = {data}></ContactsTable>
   }
 
   return (
@@ -41,7 +45,7 @@ export function Contacts() {
 
       </ContentBlockUI>
       <ContentBlockUI MT='20px' >
-        <Table></Table>
+        { getContent(contacts) }
       </ContentBlockUI>
     </>
   )

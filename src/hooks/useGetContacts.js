@@ -3,13 +3,13 @@ import { useEffect, useState } from "react"
 export const useGetContacts = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [isError, setIsError] = useState(false)
-  const [data, setData] = useState(null)
+  const [data, setData] = useState([])
 
   useEffect(() => {
     const getContacts = async () => {
       setIsLoading(true)
       try {
-        const response = await fetch('https://randomuser.me/api/?results=200')
+        const response = await fetch('https://randomuser.me/api/?results=10')
         const { results, error } = await response.json()
         if (error) {
           throw new Error(error)
@@ -26,7 +26,7 @@ export const useGetContacts = () => {
     }
     getContacts()
   }, [])
-  
+
   return {
     data,
     isError,
