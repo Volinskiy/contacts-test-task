@@ -14,7 +14,7 @@ import { NATIONALITIES } from '../../constants/nationality'
 import { VIEW_MODE } from '../../constants/viewMode'
 
 export function Contacts() {
-	
+	 
 	const [viewMode, setViewMode] = useViewMode()
 	const contacts = useGetContacts(NATIONALITIES)
 
