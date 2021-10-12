@@ -37,7 +37,7 @@ export function Contacts() {
 		
 		if (viewMode === VIEW_MODE.TABLE) {
 			return <ContactsTable contacts = {data}></ContactsTable>
-		}
+		} 
 	
 		if (viewMode === VIEW_MODE.GRID) {
 			return 'Hello'
