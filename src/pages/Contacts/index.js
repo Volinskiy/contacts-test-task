@@ -13,36 +13,33 @@ import { useViewMode } from '../../hooks/useViewMode'
 import { NATIONALITIES } from '../../constants/nationality'
 import { VIEW_MODE } from '../../constants/viewMode'
 
-export function Contacts() {
-	 
-	const [viewMode, setViewMode] = useViewMode()
-	const contacts = useGetContacts(NATIONALITIES)
+function getContent(viewMode) {
+	const { isLoading, isError, data } = useGetContacts(NATIONALITIES)
 
-	function getContent({isLoading, isError, data}) {
-		if (isLoading) {
-			return (
-				<Box sx={{
-							display: 'flex',
-							justifyContent: 'center',
-							alignItems: 'center',
-							minHeight: '300px'}}>
-					<CircularProgress />
-				</Box>
-			)
-		}
-	
-		if (isError) {
-			return <h1>isError</h1>
-		}
-		
-		if (viewMode === VIEW_MODE.TABLE) {
-			return <ContactsTable contacts = {data}></ContactsTable>
-		} 
-	
-		if (viewMode === VIEW_MODE.GRID) {
-			return 'Hello'
-		}
+	if (isLoading) {
+		return (
+			<Box sx={{
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+						minHeight: '300px'}}>
+				<CircularProgress data-testid="contacts-loader"/>
+			</Box>
+		)
 	}
+	if (isError) {
+		return <h1>isError</h1>
+	}
+	if (viewMode === VIEW_MODE.TABLE) {
+		return <ContactsTable contacts = {data}></ContactsTable>
+	} 
+	if (viewMode === VIEW_MODE.GRID) {
+		return 'Hello'
+	}
+}
+
+export function Contacts() {
+	const [viewMode, setViewMode] = useViewMode()
 
 	return (
 		<>
@@ -62,7 +59,7 @@ export function Contacts() {
 
 			</ContentBlockUI>
 			<ContentBlockUI mt='20px' >
-				{ getContent(contacts) }
+				{ getContent(viewMode) }
 			</ContentBlockUI>
 		</>
 	)
