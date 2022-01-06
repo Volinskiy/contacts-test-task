@@ -6,14 +6,13 @@ export const useGetContacts = (nationality = null) => {
 	const [data, setData] = useState([])
 
 	const getRequestParam = () => {
-		let RequestParam = `nat=`
+		let RequestParam = `&nat=`
 		if (nationality) {
 			for (let key in nationality) {
 				RequestParam += nationality[key] + ','
 			}
 		}
-		RequestParam += '&'
-		return ''
+		return RequestParam
 	}
 	useEffect(() => {
 		const getContacts = async () => {

@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
@@ -12,6 +11,7 @@ import { useGetContacts } from '../../hooks/useGetContacts'
 import { useViewMode } from '../../hooks/useViewMode'
 import { NATIONALITIES } from '../../constants/nationality'
 import { VIEW_MODE } from '../../constants/viewMode'
+
 
 function getContent(viewMode) {
 	const { isLoading, isError, data } = useGetContacts(NATIONALITIES)
@@ -34,8 +34,9 @@ function getContent(viewMode) {
 		return <ContactsTable contacts = {data}></ContactsTable>
 	} 
 	if (viewMode === VIEW_MODE.GRID) {
-		return 'Hello'
+		return 'VIEW_MODE.GRID'
 	}
+	return 'There in no VIEW_MODE'
 }
 
 export function Contacts() {
@@ -44,7 +45,7 @@ export function Contacts() {
 	return (
 		<>
 			<Container sx={{ mt: 3 }} maxWidth='xl'>
-				<Grid container sx={{justifyContent: 'space-between',}}>
+				<Grid container justifyContent='space-between'>
 					<Grid item sx={{alignSelf: 'center'}}>
 						<Typography variant='h4' component='h1' sx={{fontWeight: 'bold'}}>
 							Contacts

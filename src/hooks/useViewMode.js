@@ -7,7 +7,7 @@ function getInitialViewMode() {
 }
 
 export function useViewMode() {
-	const [viewMode, setViewMode] = useState(getInitialViewMode())
+	const [viewMode, setViewMode] = useState(getInitialViewMode)
 
 	useEffect(() => {
 		localStorage.setItem(STORAGE_VIEW_MODE_NAME, viewMode)
