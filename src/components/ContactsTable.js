@@ -39,6 +39,7 @@ export function ContactsTable({ contacts }) {
 				</TableRow>
 			</TableHead>
 			<TableBody>
+			{console.log(contacts)}
 				{contacts.map((contact) => (
 					<TableRow
 						key={contact.login.uuid}
@@ -84,8 +85,8 @@ export function ContactsTable({ contacts }) {
 							</CopyToClipBoard>
 							<Typography variant="caption" >
 								{`${contact.location.street.number} 
-									${contact.location.name},  
-									${contact.location.sity} 
+									${contact.location.street.name},  
+									${contact.location.city} 
 									${contact.location.state} 
 									${contact.location.country} 
 									${contact.location.postcode}`}

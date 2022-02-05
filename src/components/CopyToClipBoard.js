@@ -44,7 +44,7 @@ export function CopyToClipBoard({ text, color, whiteSpace, padding, fontSize, fo
 									whiteSpace: whiteSpace,
 									justifyContent: 'flex-start',
 									p: padding,}}
-					onClick={() => onClickCopy()}
+					onClick={onClickCopy}
 				>
 					<FileCopyOutlinedIcon sx={{position: 'absolute', left: '-20px'}} fontSize="small"/>
 					<Typography sx={{

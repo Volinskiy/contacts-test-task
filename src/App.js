@@ -1,5 +1,4 @@
 import './App.css'
-import './App.css'
 import { Contacts } from './pages/Contacts'
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
