@@ -28,13 +28,13 @@ function getContent(viewMode) {
 		)
 	}
 	if (isError) {
-		return <h1>isError</h1>
+		return <h1 data-testid="error-data-loading">isError</h1>
 	}
 	if (viewMode === VIEW_MODE.TABLE) {
 		return <ContactsTable contacts = {data}></ContactsTable>
 	} 
 	if (viewMode === VIEW_MODE.GRID) {
-		return 'VIEW_MODE.GRID'
+		return <h1 data-testid="table-grid-data-view-mode">'VIEW_MODE.GRID'</h1>
 	}
 	return 'There in no VIEW_MODE'
 }

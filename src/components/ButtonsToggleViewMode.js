@@ -23,10 +23,18 @@ export function BottonsToggleViewMode({ setViewMode, viewMode }) {
 			exclusive
 			onChange={toggleViewModeHandler}
 		>
-			<ToggleButton value={VIEW_MODE.TABLE} aria-label={VIEW_MODE.TABLE}>
+			<ToggleButton 
+				value={VIEW_MODE.TABLE} 
+				aria-label={VIEW_MODE.TABLE}
+				data-testid="button-view-mode-table"
+			>
 				<ViewListIcon />
 			</ToggleButton>
-			<ToggleButton value={VIEW_MODE.GRID} aria-label={VIEW_MODE.GRID}>
+			<ToggleButton 
+				value={VIEW_MODE.GRID} 
+				aria-label={VIEW_MODE.GRID}
+				data-testid="button-view-mode-grid"
+			>
 				<ViewModuleIcon />
 			</ToggleButton>
 		</ToggleButtonGroup>)

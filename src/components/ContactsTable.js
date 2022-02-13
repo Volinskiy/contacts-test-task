@@ -26,7 +26,7 @@ function calculateAge(birsday) {
 export function ContactsTable({ contacts }) {
 
 	return (
-		<Table sx={{ minWidth: 650 }} aria-label="Table contacts">
+		<Table sx={{ minWidth: 650 }} data-testid="table-table-data-view-mode">
 			<TableHead>
 				<TableRow>
 					<TableCell>Avatar</TableCell>
