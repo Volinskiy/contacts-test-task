@@ -38,7 +38,7 @@ describe('contacts get data saccess', () => {
 })
 
 describe('contacts data view mode', () => {
-  afterEach(() => {window.localStorage.setItem(STORAGE_VIEW_MODE_NAME, VIEW_MODE.TABLE)})
+  afterEach(() => {window.localStorage.clear()})
   
   test(`Grid view mode after loading`, async () => {
     window.localStorage.setItem(STORAGE_VIEW_MODE_NAME, VIEW_MODE.GRID)
@@ -56,7 +56,6 @@ describe('contacts data view mode', () => {
     expect(tableGridMode).toBeInTheDocument()
     const tableTable = screen.queryByTestId('table-table-data-view-mode')
     expect(tableTable).not.toBeInTheDocument()
-    // window.localStorage.setItem(STORAGE_VIEW_MODE_NAME, VIEW_MODE.TABLE)
   })
  
   test(`Table view mode after loading`, async () => {
@@ -85,9 +84,7 @@ describe('contacts data view mode', () => {
     expect(buttonSwitchGridDataViewMode).toHaveClass('Mui-selected')
     const tableGridMode = screen.getByTestId('table-grid-data-view-mode')
     expect(tableGridMode).toBeInTheDocument()
-    screen.debug()
-    // window.localStorage.setItem(STORAGE_VIEW_MODE_NAME, VIEW_MODE.TABLE)
-    // expect(window.localStorage.getItem(STORAGE_VIEW_MODE_NAME)).toEqual(VIEW_MODE.TABLE)
+    expect(window.localStorage.getItem(STORAGE_VIEW_MODE_NAME)).toEqual(VIEW_MODE.GRID)
   })
 
   test(`Switching to table view mode`, async () => {
@@ -100,7 +97,7 @@ describe('contacts data view mode', () => {
     userEvent.click(buttonSwitchTableDataViewMode)
     const tableGridMode = screen.getByTestId('table-table-data-view-mode')
     expect(tableGridMode).toBeInTheDocument()
-    // expect(window.localStorage.getItem(STORAGE_VIEW_MODE_NAME)).toEqual(VIEW_MODE.TABLE)
+    expect(window.localStorage.getItem(STORAGE_VIEW_MODE_NAME)).toEqual(VIEW_MODE.TABLE)
     screen.debug()
   })
 })
