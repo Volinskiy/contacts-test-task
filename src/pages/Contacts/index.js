@@ -11,6 +11,7 @@ import { useGetContacts } from '../../hooks/useGetContacts'
 import { useViewMode } from '../../hooks/useViewMode'
 import { NATIONALITIES } from '../../constants/nationality'
 import { VIEW_MODE } from '../../constants/viewMode'
+import { FiltersBar } from '../../components/FiltersBar'
 
 
 function getContent(viewMode) {
@@ -42,7 +43,7 @@ function getContent(viewMode) {
 export function Contacts() {
 	const [viewMode, setViewMode] = useViewMode()
 
-	return (
+	return ( 
 		<>
 			<Container sx={{ mt: 3 }} maxWidth='xl'>
 				<Grid container justifyContent='space-between'>
@@ -57,7 +58,7 @@ export function Contacts() {
 				</Grid>
 			</Container>
 			<ContentBlockUI mt='20px'>
-
+				<FiltersBar />
 			</ContentBlockUI>
 			<ContentBlockUI mt='20px' >
 				{ getContent(viewMode) }
