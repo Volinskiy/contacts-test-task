@@ -4,26 +4,18 @@ import Grid from '@mui/material/Grid';
 import TextField from '@material-ui/core/TextField';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
-import InputLabel from "@mui/material/InputLabel";
 import FormControl from '@mui/material/FormControl';
 
-export function FiltersBar() {
-	const [fullName, setFullName] = useState('')
-	const [gender, setGender] = useState('')
-	const [nationality, setNationality] = useState('')
+import { GENDER_HUMAN_NAME } from '../constants/gender'
 
-  const handleFullNameChange = (event) => {
-    setFullName(event.target.value)
-  };
-	
-	const handleGenderChange = (event) => {
-    setGender(event.target.value)
-  };
-
-	const handleNationalityChange = (event) => {
-    setNationality(event.target.value)
-  };
-
+export function FiltersBar({
+	fullName,
+	onFullNameChange,
+	gender,
+	onGenderChange,
+	nationality,
+	onNationalityChange
+}) {
 
 	return (
 		<>
@@ -35,30 +27,29 @@ export function FiltersBar() {
 		>
 			<Grid item xs={6}>
 				<TextField
-				labelId="d"
 					variant="outlined"
 					size="small"
           placeholder="Search by full name"
           fullWidth
           margin="normal"
 					value={fullName}
-					onChange={handleFullNameChange}
+					onChange={onFullNameChange}
 				/>
 			</Grid>
 			<Grid item xs={3}>
 				<FormControl  fullWidth>
 					<Select
 						value={gender}
-						onChange={handleGenderChange}
+						onChange={onGenderChange}
 						displayEmpty
 						inputProps={{ 'aria-label': 'Without label' }}
 					>
 						<MenuItem value="">
-							<em>None</em>
+							<em>Gender</em>
 						</MenuItem>
-						<MenuItem value={'M'}>Male</MenuItem>
-						<MenuItem value={'F'}>Fimale</MenuItem>
-						<MenuItem value={'A'}>Another</MenuItem>
+						<MenuItem value={GENDER_HUMAN_NAME.M}>{GENDER_HUMAN_NAME.M}</MenuItem>
+						<MenuItem value={GENDER_HUMAN_NAME.F}>{GENDER_HUMAN_NAME.F}</MenuItem>
+						<MenuItem value={GENDER_HUMAN_NAME.A}>{GENDER_HUMAN_NAME.A}</MenuItem>
 					</Select>
 				</FormControl>
 			</Grid>
@@ -70,7 +61,7 @@ export function FiltersBar() {
           fullWidth
           margin="normal"
 					value={nationality}
-					onChange={handleNationalityChange}
+					onChange={onNationalityChange}
 				/>
 			</Grid>
 		</Grid>

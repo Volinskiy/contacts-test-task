@@ -18,7 +18,7 @@ export const useGetContacts = (nationality = null) => {
 		const getContacts = async () => {
 			try {
 				setIsLoading(true)
-				const response = await fetch('https://randomuser.me/api/?results=10' + getRequestParam())
+				const response = await fetch('https://randomuser.me/api/?results=20' + getRequestParam())
 				const { results, error } = await response.json()
 				if (error) {
 					throw new Error(error)

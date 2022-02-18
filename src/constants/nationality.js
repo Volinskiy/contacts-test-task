@@ -10,12 +10,11 @@ export const NATIONALITIES = {
 	FR: 'FR',
 	GB: 'GB',
 	IE: 'IE',
-	IR: 'IR',
 	NO: 'NO',
 	NL: 'NL',
 	NZ: 'NZ',
-	TR: 'TR',
 	US: 'US',
+	DEFAULT: '',
 }
 
 export const NATIONALITIES_HUMAN_NAME = {
@@ -30,10 +29,8 @@ export const NATIONALITIES_HUMAN_NAME = {
 	[NATIONALITIES.FR]: 'France',
 	[NATIONALITIES.GB]: 'United Kingdom',
 	[NATIONALITIES.IE]: 'Ireland',
-	[NATIONALITIES.IR]: 'Iran, Islamic Republic of',
 	[NATIONALITIES.NO]: 'Norway',
 	[NATIONALITIES.NL]: 'Netherlands',
 	[NATIONALITIES.NZ]: 'New Zealand',
-	[NATIONALITIES.TR]: 'Turkey',
 	[NATIONALITIES.US]: 'United States of America',
 }
